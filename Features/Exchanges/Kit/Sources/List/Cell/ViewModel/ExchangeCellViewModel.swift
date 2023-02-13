@@ -15,6 +15,7 @@ extension ExchangeTableViewCell {
             numberFormatter.numberStyle = .currency
             numberFormatter.maximumFractionDigits = 2
             numberFormatter.currencySymbol = "$"
+            numberFormatter.maximumIntegerDigits = 6
             value = numberFormatter.string(from: .init(floatLiteral: exchange.volume1DayUsd))
         }
     }

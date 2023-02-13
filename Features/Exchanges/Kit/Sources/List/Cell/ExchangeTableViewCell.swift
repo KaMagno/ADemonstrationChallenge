@@ -19,14 +19,14 @@ final class ExchangeTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 21.0)
+        label.font = .systemFont(ofSize: 18.0)
         label.text = "Title"
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18.0)
+        label.font = .systemFont(ofSize: 12.0)
         label.textColor = .lightGray
         label.text = "Subtitle"
         return label
@@ -34,7 +34,7 @@ final class ExchangeTableViewCell: UITableViewCell {
     
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18.0)
+        label.font = .systemFont(ofSize: 14.0)
         label.textColor = .darkGray
         label.textAlignment = .right
         label.text = "$ 12,000.38"
