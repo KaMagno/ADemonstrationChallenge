@@ -8,6 +8,8 @@ struct GenericBaseEndpoint: BaseEndpoint {
 }
 
 struct GenericEndpoint: Endpoint {
+    typealias Response = String
+    
     var path: String
     var baseEndpoint: BaseEndpoint? = nil
     var httpMethod: HTTPMethod
