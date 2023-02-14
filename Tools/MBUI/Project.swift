@@ -11,7 +11,11 @@ let mainTarget = Target(name: name,
                         bundleId: bundleId,
                         infoPlist: .default,
                         sources: ["Kit/Sources/**"],
-                        resources: ["Kit/Resources/**"])
+                        resources: ["Kit/Resources/**"],
+                        dependencies: [
+                            .external(name: "SnapKit"),
+                            .external(name: "Lottie")
+                        ])
 
 let sampleTarget = Target(name: name + "Sample",
                           platform: .iOS,

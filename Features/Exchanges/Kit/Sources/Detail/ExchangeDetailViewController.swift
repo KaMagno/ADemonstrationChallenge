@@ -125,10 +125,8 @@ private extension ExchangeDetailViewController {
     }
     
     func setupNavigationTitle() {
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.AppColor.dark
-        ]
     }
 }
 
@@ -212,7 +210,6 @@ extension ExchangeDetailViewController: ViewCoding {
     func setupAddtionalContent() {
         view.backgroundColor = .AppColor.bright
         volumesView.backgroundColor = .AppColor.terciary
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

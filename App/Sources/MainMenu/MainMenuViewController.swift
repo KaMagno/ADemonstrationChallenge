@@ -20,6 +20,8 @@ class MainMenuViewController: UIViewController {
             self.didTouchNextButton()
         }
         let button = UIButton(primaryAction: action)
+        button.titleLabel?.textColor = .AppColor.primary
+        button.titleLabel?.font = .title
         return button
     }()
     
@@ -57,7 +59,7 @@ extension MainMenuViewController: ViewCoding {
     }
     
     func setupAddtionalContent() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .AppColor.bright
     }
 }
 

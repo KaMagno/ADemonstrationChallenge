@@ -11,10 +11,10 @@ final class MainMenuPresenter {
 extension MainMenuPresenter: MainMenuPresenting {
     // MARK: Interacting Funcitons
     func presentMainInfo() {
-        let title = "MB Challenge"
+        let title = MainAppStrings.title
         viewController?.display(title: title)
         
-        let nextButtonTitle = "Listing Exchanges"
+        let nextButtonTitle = MainAppStrings.exchangeList
         viewController?.display(nextButtonTitle: nextButtonTitle)
     }
 }

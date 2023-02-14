@@ -4,7 +4,7 @@ import MBUI
 import SnapKit
 import UIKit
 
-protocol ExchangeListDisplaying {
+protocol ExchangeListDisplaying: AnyObject {
     func display(exchanges: [Exchange])
     func update(exchangeIconList: [ExchangeIconPath])
     func displayError()
@@ -12,7 +12,7 @@ protocol ExchangeListDisplaying {
     func undisplayLoading()
 }
 
-class ExchangeListViewController: UIViewController {
+final class ExchangeListViewController: UIViewController {
     // MARK: Constatns
     
     private enum Constants {
@@ -21,7 +21,7 @@ class ExchangeListViewController: UIViewController {
     
     // MARK: VIP Properties
     
-    weak var interactor: ExchangeListInteracting?
+    var interactor: ExchangeListInteracting?
     var router: ExchangeListRouting?
     
     // MARK: View Properties
@@ -32,6 +32,12 @@ class ExchangeListViewController: UIViewController {
         tableView.register(ExchangeTableViewCell.self,
                            forCellReuseIdentifier: ExchangeTableViewCell.identifier)
         return tableView
+    }()
+    
+    private lazy var loadingView: LoadingView = {
+        let loader = LoadingView()
+        loader.isHidden = true
+        return loader
     }()
     
     // MARK: Private Propeties
@@ -51,12 +57,22 @@ class ExchangeListViewController: UIViewController {
         setupViewCoding()
         requestDataList()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationTitle()
+    }
 }
 
 // MARK: Private Functions
 private extension ExchangeListViewController {
     func requestDataList() {
         interactor?.requestExchangeListData()
+    }
+    
+    func setupNavigationTitle() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
     }
 }
 
@@ -66,10 +82,14 @@ private extension ExchangeListViewController {
 extension ExchangeListViewController: ViewCoding {
     func setupViewHierarchy() {
         view.addSubview(tableView)
+        view.addSubview(loadingView)
     }
     
     func setupConstratins() {
         tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        loadingView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
@@ -151,10 +171,12 @@ extension ExchangeListViewController: ExchangeListDisplaying {
     }
     
     func displayLoading() {
-        //
+        tableView.isHidden = true
+        loadingView.isHidden = false
     }
     
     func undisplayLoading() {
-        //
+        loadingView.isHidden = true
+        tableView.isHidden = false
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import MBUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let bounds = UIScreen.main.bounds
         window = UIWindow(frame: bounds)
         
+        setNavigationBarAppearance()
         open(viewController: mainViewController, addToANavigationController: true)
         
         return true
@@ -28,11 +30,15 @@ private extension AppDelegate {
         var rootViewController = viewController
         
         if addToANavigationController {
-            rootViewController = UINavigationController(rootViewController: viewController)
+            rootViewController = MBNavigationController(rootViewController: viewController)
         }
         
         rootViewController.modalPresentationStyle = .overFullScreen
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+    }
+    
+    func setNavigationBarAppearance() {
+        
     }
 }

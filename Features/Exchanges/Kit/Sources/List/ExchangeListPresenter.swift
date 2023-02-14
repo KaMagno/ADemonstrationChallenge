@@ -11,40 +11,28 @@ protocol ExchangeListPresenting {
 
 final class ExchangeListPresenter {
     // MARK: VIP Properties
-    let viewController: ExchangeListDisplaying
-    
-    init(viewController: ExchangeListDisplaying) {
-        self.viewController = viewController
-    }
-    
-    // MARK: Properties
-    
-    // MARK: Internal Funcitons
-}
-
-private extension ExchangeListPresenter {
-    // MARK: Private Funcitons
+    weak var viewController: ExchangeListDisplaying?
 }
 
 extension ExchangeListPresenter: ExchangeListPresenting {
     // MARK: Interacting Funcitons
     func present(exchanges: [Exchange]) {
-        viewController.display(exchanges: exchanges)
+        viewController?.display(exchanges: exchanges)
     }
     
     func present(exchangeIconPaths: [ExchangeIconPath]) {
-        viewController.update(exchangeIconList: exchangeIconPaths)
+        viewController?.update(exchangeIconList: exchangeIconPaths)
     }
     
     func presentError() {
-        
+        viewController?.displayError()
     }
     
     func presentLoad() {
-        viewController.displayLoading()
+        viewController?.displayLoading()
     }
     
     func hideLoad() {
-        
+        viewController?.undisplayLoading()
     }
 }

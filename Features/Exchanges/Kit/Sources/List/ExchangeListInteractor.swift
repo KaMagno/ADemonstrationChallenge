@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ExchangeListInteracting: AnyObject {
+protocol ExchangeListInteracting {
     func requestExchangeListData()
     func requestExchangeIconPathList()
 }
@@ -26,9 +26,11 @@ final class ExchangeListInteractor {
 extension ExchangeListInteractor: ExchangeListInteracting {
     // MARK: Interacting Funcitons
     func requestExchangeListData() {
+        presenter.presentLoad()
         exchangeListWorker.fetchExchangeList { [self] result in
             switch result {
             case .success(let exchanges):
+                self.presenter.hideLoad()
                 self.presenter.present(exchanges: exchanges)
             case .failure:
                 self.presenter.presentError()
