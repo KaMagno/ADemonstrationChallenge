@@ -1,8 +1,11 @@
-all: generate
+all: install generate
+
+install:
+	@./bundle
 
 generate:
 	tuist fetch
 	tuist generate
 
-edit:
+edit-project:
 	tuist edit

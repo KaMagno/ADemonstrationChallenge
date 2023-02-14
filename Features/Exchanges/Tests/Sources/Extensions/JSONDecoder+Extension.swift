@@ -5,7 +5,7 @@ extension JSONDecoder {
         case didNotFindStubJson
     }
     
-    func decode<T: Decodable>(fileName: String) throws -> T {
+    static func decode<T: Decodable>(fileName: String) throws -> T {
         guard let jsonPath = ExchangesTestsResources.bundle.url(forResource: fileName,
                                                                 withExtension: "json") else {
             throw Errors.didNotFindStubJson

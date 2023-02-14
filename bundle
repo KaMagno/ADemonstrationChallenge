@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo "Installing Tuist..."
+
+curl -Ls https://install.tuist.io | bash
+
+echo "Tuist installed successfully!"

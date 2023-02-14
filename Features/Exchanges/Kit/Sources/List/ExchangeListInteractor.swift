@@ -27,12 +27,13 @@ extension ExchangeListInteractor: ExchangeListInteracting {
     // MARK: Interacting Funcitons
     func requestExchangeListData() {
         presenter.presentLoad()
-        exchangeListWorker.fetchExchangeList { [self] result in
+        exchangeListWorker.fetchExchangeList { result in
+            self.presenter.hideLoad()
             switch result {
             case .success(let exchanges):
-                self.presenter.hideLoad()
                 self.presenter.present(exchanges: exchanges)
-            case .failure:
+            case .failure(let error):
+                debugPrint(error)
                 self.presenter.presentError()
                 //If we had a Logger. It would be added here.
                 //Or a switch to show different kinds of error's feedback on screen.

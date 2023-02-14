@@ -12,8 +12,7 @@ final class ExchangeListWorkingStub: ExchangeListWorking {
             return
         }
         do {
-            let decoder = JSONDecoder()
-            let exchangeIconPaths: [ExchangeIconPath] = try decoder.decode(fileName: "ExchangeImagePaths")
+            let exchangeIconPaths: [ExchangeIconPath] = try JSONDecoder.decode(fileName: "ExchangeImagePaths")
             completion(.success(exchangeIconPaths))
         } catch {
             debugPrint(error)
@@ -27,8 +26,7 @@ final class ExchangeListWorkingStub: ExchangeListWorking {
             return
         }
         do {
-            let decoder = JSONDecoder()
-            let exchangeIconPaths: [Exchange] = try decoder.decode(fileName: "ExchangeList")
+            let exchangeIconPaths: [Exchange] = try JSONDecoder.decode(fileName: "ExchangeList")
             completion(.success(exchangeIconPaths))
         } catch {
             debugPrint(error)
