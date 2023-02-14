@@ -16,8 +16,8 @@ struct Exchange: Decodable {
     let exchangeId: String
     let name: String
     let website: String
-    let dataStartText: String?
-    let dataEndText: String?
+    let dateStartText: String?
+    let dateEndText: String?
     let dataSymbolsCount: Int
     let volume1HourUsd: Double
     let volume1DayUsd: Double
@@ -29,8 +29,8 @@ struct Exchange: Decodable {
         self.exchangeId = try container.decode(String.self, forKey: Exchange.CodingKeys.exchangeId)
         self.name = try container.decode(String.self, forKey: Exchange.CodingKeys.name)
         self.website = try container.decode(String.self, forKey: Exchange.CodingKeys.website)
-        self.dataStartText = try container.decodeIfPresent(String.self, forKey: Exchange.CodingKeys.dataStart)
-        self.dataEndText = try container.decodeIfPresent(String.self, forKey: Exchange.CodingKeys.dataEnd)
+        self.dateStartText = try container.decodeIfPresent(String.self, forKey: Exchange.CodingKeys.dataStart)
+        self.dateEndText = try container.decodeIfPresent(String.self, forKey: Exchange.CodingKeys.dataEnd)
         self.dataSymbolsCount = try container.decode(Int.self, forKey: Exchange.CodingKeys.dataSymbolsCount)
         self.volume1HourUsd = try container.decode(Double.self, forKey: Exchange.CodingKeys.volume1HourUsd)
         self.volume1DayUsd = try container.decode(Double.self, forKey: Exchange.CodingKeys.volume1DayUsd)
@@ -45,12 +45,12 @@ extension Exchange {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter
     }
-    var dataStart: Date? {
-        guard let dataStartText = dataStartText else { return nil }
+    var dateStart: Date? {
+        guard let dataStartText = dateStartText else { return nil }
         return dataDateFormatter.date(from: dataStartText)
     }
-    var dataEnd: Date? {
-        guard let dataEndText = dataEndText else { return nil }
+    var dateEnd: Date? {
+        guard let dataEndText = dateEndText else { return nil }
         return dataDateFormatter.date(from: dataEndText)
     }
 }

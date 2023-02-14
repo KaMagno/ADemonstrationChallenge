@@ -11,7 +11,11 @@ protocol ExchangeListPresenting {
 
 final class ExchangeListPresenter {
     // MARK: VIP Properties
-    weak var viewController: ExchangeListDisplaying?
+    let viewController: ExchangeListDisplaying
+    
+    init(viewController: ExchangeListDisplaying) {
+        self.viewController = viewController
+    }
     
     // MARK: Properties
     
@@ -25,11 +29,11 @@ private extension ExchangeListPresenter {
 extension ExchangeListPresenter: ExchangeListPresenting {
     // MARK: Interacting Funcitons
     func present(exchanges: [Exchange]) {
-        viewController?.display(exchanges: exchanges)
+        viewController.display(exchanges: exchanges)
     }
     
     func present(exchangeIconPaths: [ExchangeIconPath]) {
-        viewController?.update(exchangeIconList: exchangeIconPaths)
+        viewController.update(exchangeIconList: exchangeIconPaths)
     }
     
     func presentError() {
@@ -37,7 +41,7 @@ extension ExchangeListPresenter: ExchangeListPresenting {
     }
     
     func presentLoad() {
-        viewController?.displayLoading()
+        viewController.displayLoading()
     }
     
     func hideLoad() {

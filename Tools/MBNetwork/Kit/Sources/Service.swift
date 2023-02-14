@@ -11,6 +11,10 @@ public class Service {
 }
 
 private extension Service {
+    enum Errors: Error {
+        case unknow
+    }
+    
     func handle<T: Decodable>(data: Data?,
                               keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                               dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
@@ -66,6 +70,36 @@ extension Service: EndpointRequesterProtocol {
                                                     dateDecodingStrategy: dateDecodingStrategy) {
                 completion(.success(object))
             }
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
+    public func request(urlPath: String, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy, completion: @escaping (Result<Data, Error>) -> Void) -> URLSessionDataTask? {
+        
+        guard let url = URL(string: urlPath) else {
+            return nil
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            if let response = response {
+                debugPrint("--- URL Response ---")
+                debugPrint(response)
+                debugPrint("--- End URL Response ---")
+            }
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(Errors.unknow))
+                return
+            }
+            completion(.success(data))
         }
         
         task.resume()

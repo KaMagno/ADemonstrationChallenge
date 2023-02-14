@@ -6,6 +6,7 @@ let workspace = Workspace(name: "MercadoBitcoinChallange",
                             "Features/Exchanges",
                             "Tools/MBNetwork",
                             "Tools/Commons",
+                            "Tools/MBUI",
                           ],
                           additionalFiles: [
                             .glob(pattern: "./README.MD")

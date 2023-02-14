@@ -2,16 +2,16 @@ import UIKit
 
 public enum ExchangeListCreator {
     public static func create() -> UIViewController {
+        let viewController = ExchangeListViewController()
         let router = ExchangeListRouter()
-        let presenter = ExchangeListPresenter()
+        let presenter = ExchangeListPresenter(viewController: viewController)
         let exchangeListWorker = ExchangeListWorker()
         let interactor = ExchangeListInteractor(presenter: presenter,
                                                 exchangeListWorker: exchangeListWorker)
-        let viewController = ExchangeListViewController()
+        
+        router.viewController = viewController
         viewController.router = router
         viewController.interactor = interactor
-        
-        presenter.viewController = viewController
         
         return viewController
     }

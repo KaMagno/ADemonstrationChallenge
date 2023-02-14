@@ -1,22 +1,28 @@
-import UIKit
+import Foundation
 
 extension ExchangeTableViewCell {
-    // MARK: - ExchangeCellViewController.ViewModel
     struct ViewModel {
-        let title: String
-        let subtitle: String
-        let value: String?
-        
-        init(exchange: Exchange) {
-            title = exchange.name
-            subtitle = exchange.exchangeId
-            
+        // MARK: Computed Variables
+        var title: String {
+            exchange.name
+        }
+        var subtitle: String {
+            exchange.exchangeId
+        }
+        var value: String? {
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = .currency
             numberFormatter.maximumFractionDigits = 2
             numberFormatter.currencySymbol = "$"
             numberFormatter.maximumIntegerDigits = 6
-            value = numberFormatter.string(from: .init(floatLiteral: exchange.volume1DayUsd))
+            return numberFormatter.string(from: .init(floatLiteral: exchange.volume1DayUsd))
+        }
+        
+        // MARK: Internal Variables
+        let exchange: Exchange
+        
+        init(exchange: Exchange) {
+            self.exchange = exchange
         }
     }
 }

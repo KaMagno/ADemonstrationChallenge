@@ -1,8 +1,8 @@
 import ProjectDescription
 
 // MARK: - Variables
-let name = "Exchanges"
-let bundleId = "com.kaiquemagno.mercadobitcoinchallenge.features.\(name)"
+let name = "MBUI"
+let bundleId = "com.kaiquemagno.mercadobitcoinchallenge.tools.\(name)"
 
 // MARK: - Targets
 let mainTarget = Target(name: name,
@@ -11,17 +11,13 @@ let mainTarget = Target(name: name,
                         bundleId: bundleId,
                         infoPlist: .default,
                         sources: ["Kit/Sources/**"],
-                        resources: ["Kit/Resources/**"],
-                        dependencies: [
-                            .project(target: "MBNetwork", path: "../../Tools/MBNetwork"),
-                            .project(target: "MBUI", path: "../../Tools/MBUI"),
-                            .external(name: "SnapKit")
-                        ])
+                        resources: ["Kit/Resources/**"])
 
 let sampleTarget = Target(name: name + "Sample",
                           platform: .iOS,
                           product: .app,
                           bundleId: "\(bundleId).Sample",
+                          infoPlist: .default,
                           sources: ["Sample/Sources/**"],
                           resources: ["Sample/Resources/**"],
                           dependencies: [
@@ -32,6 +28,7 @@ let testTarget = Target(name: name + "Tests",
                         platform: .iOS,
                         product: .unitTests,
                         bundleId: "\(bundleId).Tests",
+                        infoPlist: .default,
                         sources: ["Tests/Sources/**"],
                         resources: ["Tests/Resources/**"],
                         dependencies: [

@@ -1,8 +1,10 @@
-import UIKit
 import Commons
+import MBNetwork
+import MBUI
 import SnapKit
+import UIKit
 
-protocol ExchangeListDisplaying: AnyObject {
+protocol ExchangeListDisplaying {
     func display(exchanges: [Exchange])
     func update(exchangeIconList: [ExchangeIconPath])
     func displayError()
@@ -11,9 +13,15 @@ protocol ExchangeListDisplaying: AnyObject {
 }
 
 class ExchangeListViewController: UIViewController {
+    // MARK: Constatns
+    
+    private enum Constants {
+        static let cellSize: CGFloat = 80.0
+    }
+    
     // MARK: VIP Properties
     
-    var interactor: ExchangeListInteracting?
+    weak var interactor: ExchangeListInteracting?
     var router: ExchangeListRouting?
     
     // MARK: View Properties
@@ -69,6 +77,7 @@ extension ExchangeListViewController: ViewCoding {
     func setupAddtionalContent() {
         tableView.dataSource = self
         tableView.delegate = self
+        view.backgroundColor = .AppColor.bright
     }
 }
 
@@ -83,18 +92,21 @@ extension ExchangeListViewController: UITableViewDataSource {
                                                        for: indexPath) as? ExchangeTableViewCell else {
             return .init()
         }
+        
         let exchange = exchanges[indexPath.row]
         cell.configure(viewModel: .init(exchange: exchange))
+        
         if let path = exchangeIconPaths[exchange.exchangeId] {
             cell.configure(imagePath: path)
         }
+        
         return cell
     }
 }
 
 extension ExchangeListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80.0
+        Constants.cellSize
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -107,7 +119,13 @@ extension ExchangeListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let exchange = exchanges[indexPath.row]
+        let imagePath = exchangeIconPaths[exchange.exchangeId]
         
+        router?.goToDetail(with: exchange,
+                           andImagePath: imagePath)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -125,6 +143,7 @@ extension ExchangeListViewController: ExchangeListDisplaying {
     }
     
     func displayError() {
+        //TODO: Replace text for Localizable Itens
         let alert = UIAlertController(title: "Error",
                                       message: "Could not load informatiokn",
                                       preferredStyle: .alert)

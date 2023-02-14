@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ExchangeListInteracting {
+protocol ExchangeListInteracting: AnyObject {
     func requestExchangeListData()
     func requestExchangeIconPathList()
 }

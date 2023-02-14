@@ -1,43 +1,46 @@
 import UIKit
-import Commons
+import MBNetwork
+import MBUI
 
 final class ExchangeTableViewCell: UITableViewCell {
     // MARK: - Identifier
     static let identifier = String(describing: ExchangeTableViewCell.self)
     
     // MARK: - ExchangeCellViewController
+    // MARK: Private Properties
+    private var viewModel: ViewModel?
+    
     // MARK: Internal Properties
-    var imageSessionTask: URLSessionDataTask?
+    private(set) var imageSessionTask: URLSessionDataTask?
     
     // MARK: View Properties
     private lazy var exchangeImageView: UIImageView = {
-        let defaultImage = UIImage(named: "default")
-        let imageView = UIImageView(image: defaultImage)
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.image = .AppImages.currency
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18.0)
-        label.text = "Title"
+        label.font = .title
+        label.textColor = .AppColor.primary
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12.0)
+        label.font = .xSmall
         label.textColor = .lightGray
-        label.text = "Subtitle"
+        label.textColor = .AppColor.dark
         return label
     }()
     
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0)
-        label.textColor = .darkGray
+        label.font = .small
+        label.textColor = .AppColor.secondary
         label.textAlignment = .right
-        label.text = "$ 12,000.38"
         return label
     }()
     
@@ -81,6 +84,8 @@ final class ExchangeTableViewCell: UITableViewCell {
     
     // MARK: Internal Funcitons
     func configure(viewModel: ViewModel) {
+        self.viewModel = viewModel
+        
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
         valueLabel.text = viewModel.value
@@ -98,30 +103,34 @@ final class ExchangeTableViewCell: UITableViewCell {
 private extension ExchangeTableViewCell {
     // MARK: Private Funcitons
     func setDefaultImage() {
-        let defaultImage = UIImage(systemName: "coloncurrencysign.circle")
-        exchangeImageView.image = defaultImage
+        exchangeImageView.image = .AppImages.currency
     }
     
-    func loadImage(from path: String) {
-        guard let url = URL(string: path) else { return }
+    func loadImage(from imagePath: String) {
+        guard let url = URL(string: imagePath) else { return }
         
-        let session = URLSession.init(configuration: .default)
-        session.configuration.requestCachePolicy = .returnCacheDataElseLoad
-        imageSessionTask = session.dataTask(with: url) { data, response, error in
+        imageSessionTask = ImageSession.shared.session.dataTask(with: url) {[weak self] data, response, error in
+            guard let self = self else { return }
             if let error = error {
                 print("Error downloading image: \(error.localizedDescription)")
                 return
             }
             
-            guard let data = data,
-                    let image = UIImage(data: data) else { return }
-            
             DispatchQueue.main.async {
-                self.exchangeImageView.image = image
+                self.handle(data: data)
             }
         }
         
         imageSessionTask?.resume()
+    }
+    
+    func handle(data: Data?) {
+        guard let data,
+              let exchangeImage = UIImage(data: data) else {
+            return
+        }
+        
+        exchangeImageView.image = exchangeImage
     }
 }
 

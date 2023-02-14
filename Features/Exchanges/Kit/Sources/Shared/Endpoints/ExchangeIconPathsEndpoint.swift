@@ -2,6 +2,10 @@ import Foundation
 import MBNetwork
 
 struct ExchangeIconPathsEndpoint {
+    /*
+     Use an different Size to define the Image size here because the context is the Server Service
+     So in these case the sizes are the sizes defined on the server not in the App
+     **/
     enum Size: Int {
         case small = 32
         case medium = 64

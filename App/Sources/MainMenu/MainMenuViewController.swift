@@ -1,6 +1,7 @@
-import UIKit
 import Commons
+import MBUI
 import SnapKit
+import UIKit
 
 protocol MainMenuDisplaying: AnyObject {
     func display(title: String)

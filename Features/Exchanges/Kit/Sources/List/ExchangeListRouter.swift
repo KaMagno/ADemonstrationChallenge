@@ -1,24 +1,17 @@
 import UIKit
 
-protocol ExchangeListRouting {
-    // To Go ...
+protocol ExchangeListRouting: AnyObject {
+    func goToDetail(with exchange:Exchange, andImagePath imagePath: String?)
 }
 
 final class ExchangeListRouter {
     // MARK: VIP Properties
-    weak var viewController: ExchangeListViewController?
-    
-    // MARK: Properties
-    
-    // MARK: Init
-    
-    // MARK: Internal Functions
-}
-
-private extension ExchangeListRouter {
-    // MARK: Private Functions
+    weak var viewController: UIViewController?
 }
 
 extension ExchangeListRouter: ExchangeListRouting {
-    // MARK: Routing Functions
+    func goToDetail(with exchange: Exchange, andImagePath imagePath: String?) {
+        let detailView = ExchangeDetailCreator.create(with: exchange, andImagePath: imagePath)
+        viewController?.navigationController?.pushViewController(detailView, animated: true)
+    }
 }
