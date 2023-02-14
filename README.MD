@@ -7,6 +7,7 @@
 
 ## Instructions
 **Run the command `make all`**
+*Need brew if want to run Tuist commands*
 
 ## Class Graph 
 ![Minha Imagem](graph.png)
@@ -29,6 +30,7 @@
 
 ## TODO
 ### Project Environemnt
+- Create script to insert API-Key by Environment Variableß
 - Add more Unit Tests 
 - Configurate and Add UITests
 - Create scripts to facilitate the creation of new Features and Tools
