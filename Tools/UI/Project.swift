@@ -1,8 +1,8 @@
 import ProjectDescription
 
 // MARK: - Variables
-let name = "MBUI"
-let bundleId = "com.kaiquemagno.mercadobitcoinchallenge.tools.\(name)"
+let name = "UI"
+let bundleId = "com.kaiquemagno.achallenge.tools.\(name)"
 
 // MARK: - Targets
 let mainTarget = Target(name: name,

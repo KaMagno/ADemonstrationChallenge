@@ -1,6 +1,6 @@
 import Commons
-import MBNetwork
-import MBUI
+import Network
+import UI
 import SnapKit
 import UIKit
 

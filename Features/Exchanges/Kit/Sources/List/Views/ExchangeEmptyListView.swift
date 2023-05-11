@@ -1,5 +1,5 @@
 import UIKit
-import MBUI
+import UI
 import SnapKit
 
 final class ExchangeEmptyListView: UIView {

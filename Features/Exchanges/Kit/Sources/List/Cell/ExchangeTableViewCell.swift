@@ -1,6 +1,6 @@
 import UIKit
-import MBNetwork
-import MBUI
+import Network
+import UI
 
 final class ExchangeTableViewCell: UITableViewCell {
     // MARK: - Identifier

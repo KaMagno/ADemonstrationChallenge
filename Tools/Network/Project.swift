@@ -1,8 +1,8 @@
 import ProjectDescription
 
 // MARK: - Variables
-let name = "MBNetwork"
-let bundleId = "com.kaiquemagno.mercadobitcoinchallenge.tools.\(name)"
+let name = "Network"
+let bundleId = "com.kaiquemagno.achallenge.tools.\(name)"
 
 // MARK: - Targets
 let mainTarget = Target(name: name,

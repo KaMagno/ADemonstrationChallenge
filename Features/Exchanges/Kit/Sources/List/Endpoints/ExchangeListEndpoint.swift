@@ -1,5 +1,5 @@
 import Foundation
-import MBNetwork
+import Network
 
 struct ExchangeListEndpoint: Endpoint {
     typealias Response = [Exchange]

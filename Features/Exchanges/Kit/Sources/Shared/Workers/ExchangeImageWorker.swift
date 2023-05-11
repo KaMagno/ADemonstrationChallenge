@@ -1,5 +1,5 @@
 import Commons
-import MBNetwork
+import Network
 import UIKit
 
 protocol ExchangeImageWorking {

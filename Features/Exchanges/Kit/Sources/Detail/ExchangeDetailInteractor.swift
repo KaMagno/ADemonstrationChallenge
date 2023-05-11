@@ -1,5 +1,5 @@
 import UIKit
-import MBNetwork
+import Network
 
 protocol ExchangeDetailInteracting {
     // Bussiness Functions Logic

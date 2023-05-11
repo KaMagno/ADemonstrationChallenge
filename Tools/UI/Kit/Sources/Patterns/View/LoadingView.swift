@@ -30,7 +30,7 @@ public final class LoadingView: UIView {
     
     // MARK: Private View
     private lazy var loadingIcon: UIView = {
-        guard let filePath = MBUIResources.bundle.path(forResource: Constants.fileName, ofType: Constants.fileType) else {
+        guard let filePath = UIResources.bundle.path(forResource: Constants.fileName, ofType: Constants.fileType) else {
             return UIActivityIndicatorView(style: .large)
         }
         let loader = LottieAnimationView(filePath: filePath)
@@ -45,7 +45,7 @@ public final class LoadingView: UIView {
         label.textAlignment = .center
         label.textColor = .AppColor.primary
         label.font = .title
-        label.text = MBUIStrings.loading
+        label.text = UIStrings.loading
         return label
     }()
     

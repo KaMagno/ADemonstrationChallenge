@@ -1,4 +1,4 @@
-# Mercado Bitcoin Challenge
+# A Challenge
 [![Tuist badge](https://img.shields.io/badge/Powered%20by-Tuist-blue)](https://tuist.io)
 
 *Made by: **Kaique Magno***
@@ -7,7 +7,7 @@
 
 ## Instructions
 **Run the command `make all`**
-*Need brew if want to run Tuist commands*
+*Need brew if desire to run Tuist commands*
 
 ## Class Graph 
 ![Minha Imagem](graph.png)

@@ -1,5 +1,5 @@
 import Commons
-import MBUI
+import UI
 import SnapKit
 import UIKit
 

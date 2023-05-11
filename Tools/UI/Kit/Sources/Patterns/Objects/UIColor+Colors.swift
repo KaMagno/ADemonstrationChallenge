@@ -3,27 +3,27 @@ import UIKit
 public extension UIColor {
     enum AppColor{
         public static var primary: UIColor {
-            MBUIAsset.primary.color
+            UIAsset.primary.color
         }
         
         public static var secondary: UIColor {
-            MBUIAsset.secondary.color
+            UIAsset.secondary.color
         }
         
         public static var terciary: UIColor {
-            MBUIAsset.terciary.color
+            UIAsset.terciary.color
         }
         
         public static var text: UIColor {
-            MBUIAsset.text.color
+            UIAsset.text.color
         }
         
         public static var bright: UIColor {
-            MBUIAsset.bright.color
+            UIAsset.bright.color
         }
         
         public static var dark: UIColor {
-            MBUIAsset.dark.color
+            UIAsset.dark.color
         }
     }
 }

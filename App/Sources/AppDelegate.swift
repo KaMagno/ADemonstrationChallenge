@@ -1,5 +1,5 @@
 import UIKit
-import MBUI
+import UI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +30,7 @@ private extension AppDelegate {
         var rootViewController = viewController
         
         if addToANavigationController {
-            rootViewController = MBNavigationController(rootViewController: viewController)
+            rootViewController = NavigationController(rootViewController: viewController)
         }
         
         rootViewController.modalPresentationStyle = .overFullScreen

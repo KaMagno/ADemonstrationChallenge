@@ -1,5 +1,5 @@
 import Foundation
-import MBNetwork
+import Network
 
 struct CoinBaseEndpoint: BaseEndpoint {
     var basePath: String {

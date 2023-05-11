@@ -6,18 +6,18 @@ let allTestsTargets = Scheme(name: "AllTests",
                              testAction: .targets([
                                 TestableTarget(target: .project(path: "./Features/Exchanges",
                                                                 target: "ExchangesTests")),
-                                TestableTarget(target: .project(path: "./Tools/MBNetwork",
-                                                                target: "MBNetworkTests"))
+                                TestableTarget(target: .project(path: "./Tools/Network",
+                                                                target: "NetworkTests"))
                              ])
 )
 
-let workspace = Workspace(name: "MercadoBitcoinChallange",
+let workspace = Workspace(name: "AChallange",
                           projects: [
                             "App",
                             "Features/Exchanges",
-                            "Tools/MBNetwork",
+                            "Tools/Network",
                             "Tools/Commons",
-                            "Tools/MBUI",
+                            "Tools/UI",
                           ],
                           schemes: [
                             allTestsTargets

@@ -1,5 +1,5 @@
 import Foundation
-import MBNetwork
+import Network
 import Commons
 
 protocol ExchangeListWorking {

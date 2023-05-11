@@ -2,7 +2,7 @@ import ProjectDescription
 
 // MARK: - Variables
 let name = "Commons"
-let bundleId = "com.kaiquemagno.mercadobitcoinchallenge.tools.\(name)"
+let bundleId = "com.kaiquemagno.achallenge.tools.\(name)"
 
 // MARK: - Targets
 let mainTarget = Target(name: name,

@@ -2,7 +2,7 @@ import ProjectDescription
 
 // MARK: - Variables
 let name = "Exchanges"
-let bundleId = "com.kaiquemagno.mercadobitcoinchallenge.features.\(name)"
+let bundleId = "com.kaiquemagno.achallenge.features.\(name)"
 
 // MARK: - Targets
 let mainTarget = Target(name: name,
@@ -13,8 +13,8 @@ let mainTarget = Target(name: name,
                         sources: ["Kit/Sources/**"],
                         resources: ["Kit/Resources/**"],
                         dependencies: [
-                            .project(target: "MBNetwork", path: "../../Tools/MBNetwork"),
-                            .project(target: "MBUI", path: "../../Tools/MBUI"),
+                            .project(target: "Network", path: "../../Tools/Network"),
+                            .project(target: "UI", path: "../../Tools/UI"),
                             .external(name: "SnapKit")
                         ])
 

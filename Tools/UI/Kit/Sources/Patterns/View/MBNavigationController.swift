@@ -1,6 +1,6 @@
 import UIKit
 
-public final class MBNavigationController: UINavigationController {
+public final class NavigationController: UINavigationController {
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         .default
     }
@@ -16,7 +16,7 @@ public final class MBNavigationController: UINavigationController {
 }
 
 
-private extension MBNavigationController {
+private extension NavigationController {
     func setupTintColor() {
         navigationBar.tintColor = .AppColor.terciary
     }

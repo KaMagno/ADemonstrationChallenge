@@ -3,7 +3,7 @@ import ProjectDescription
 /*
  +-------------+
  |             |
- |     App     | Contains MercadoBitcoin App target and MercadoBitcoin unit-test target
+ |     App     | Contains A Challenge App target and A Challenge unit-test target
  |             |
  +----------+-----------------+----------+
  |               depends on              |
@@ -27,7 +27,7 @@ import ProjectDescription
 
 // MARK: - Variables
 let name = "MainApp"
-let bundleId = "com.kaiquemagno.mercadobitcoinchallenge"
+let bundleId = "com.kaiquemagno.achallenge"
 
 // MARK: - Targets
 let mainTarget = Target(name: name,
@@ -42,7 +42,7 @@ let mainTarget = Target(name: name,
                         dependencies: [
                             .project(target: "Exchanges", path: "../Features/Exchanges"),
                             .project(target: "Commons", path: "../Tools/Commons"),
-                            .project(target: "MBNetwork", path: "../Tools/MBNetwork"),
+                            .project(target: "Network", path: "../Tools/Network"),
                             .external(name: "SnapKit")
                         ])
 

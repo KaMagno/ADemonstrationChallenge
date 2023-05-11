@@ -1,5 +1,5 @@
 import UIKit
-import MBUI
+import UI
 
 protocol ExchangeDetailPresenting {
     // Change Presentated Info functions
