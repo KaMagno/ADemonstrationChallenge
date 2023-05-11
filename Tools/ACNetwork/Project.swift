@@ -1,7 +1,7 @@
 import ProjectDescription
 
 // MARK: - Variables
-let name = "Network"
+let name = "ACNetwork"
 let bundleId = "com.kaiquemagno.achallenge.tools.\(name)"
 
 // MARK: - Targets

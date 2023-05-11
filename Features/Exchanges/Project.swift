@@ -13,7 +13,7 @@ let mainTarget = Target(name: name,
                         sources: ["Kit/Sources/**"],
                         resources: ["Kit/Resources/**"],
                         dependencies: [
-                            .project(target: "Network", path: "../../Tools/Network"),
+                            .project(target: "ACNetwork", path: "../../Tools/ACNetwork"),
                             .project(target: "UI", path: "../../Tools/UI"),
                             .external(name: "SnapKit")
                         ])

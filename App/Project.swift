@@ -42,7 +42,7 @@ let mainTarget = Target(name: name,
                         dependencies: [
                             .project(target: "Exchanges", path: "../Features/Exchanges"),
                             .project(target: "Commons", path: "../Tools/Commons"),
-                            .project(target: "Network", path: "../Tools/Network"),
+                            .project(target: "ACNetwork", path: "../Tools/ACNetwork"),
                             .external(name: "SnapKit")
                         ])
 

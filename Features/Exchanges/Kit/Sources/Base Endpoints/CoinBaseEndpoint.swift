@@ -1,5 +1,5 @@
 import Foundation
-import Network
+import ACNetwork
 
 struct CoinBaseEndpoint: BaseEndpoint {
     var basePath: String {

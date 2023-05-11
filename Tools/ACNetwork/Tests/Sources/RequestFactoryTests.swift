@@ -1,5 +1,5 @@
 import XCTest
-@testable import Network
+@testable import ACNetwork
 
 // MARK: - Endpoints
 struct GenericBaseEndpoint: BaseEndpoint {

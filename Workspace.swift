@@ -6,8 +6,8 @@ let allTestsTargets = Scheme(name: "AllTests",
                              testAction: .targets([
                                 TestableTarget(target: .project(path: "./Features/Exchanges",
                                                                 target: "ExchangesTests")),
-                                TestableTarget(target: .project(path: "./Tools/Network",
-                                                                target: "NetworkTests"))
+                                TestableTarget(target: .project(path: "./Tools/ACNetwork",
+                                                                target: "ACNetworkTests"))
                              ])
 )
 
@@ -15,7 +15,7 @@ let workspace = Workspace(name: "AChallange",
                           projects: [
                             "App",
                             "Features/Exchanges",
-                            "Tools/Network",
+                            "Tools/ACNetwork",
                             "Tools/Commons",
                             "Tools/UI",
                           ],

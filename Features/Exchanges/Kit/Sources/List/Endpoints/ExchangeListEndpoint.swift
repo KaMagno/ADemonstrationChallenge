@@ -1,5 +1,5 @@
 import Foundation
-import Network
+import ACNetwork
 
 struct ExchangeListEndpoint: Endpoint {
     typealias Response = [Exchange]
