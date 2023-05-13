@@ -9,9 +9,6 @@
 **Run the command `make all`**
 *Need brew if desire to run Tuist commands*
 
-## Class Graph 
-![Minha Imagem](graph.png)
-
 ## DONE
 - Create project with TUIST to use modular archtecture, so the app can grow exponentially 
 - Add SnapKit to facilitate ViewCoding
